@@ -1,7 +1,7 @@
 source "Kconfig.zephyr"
 
 menuconfig LED_SUBSYSTEM
-	bool "Led Subsystem"
+	bool "LED Subsystem"
 	default y
 
 
