@@ -1,0 +1,36 @@
+board:
+  name: custom_copy
+  vendor: iomico
+  #socs:
+    #- name: nrf54l15
+      #variants:
+      #  - name: ns
+      #    cpucluster: cpuapp
+runners:
+  run_once:
+    '--recover':
+      - runners:
+          - nrfjprog
+          - nrfutil
+        run: first
+        groups:
+          - boards:
+              - custom_copy
+    '--erase':
+      - runners:
+          - nrfjprog
+          - jlink
+          - nrfutil
+        run: first
+        groups:
+          - boards:
+              - custom_copy
+    '--reset':
+      - runners:
+          - nrfjprog
+          - jlink
+          - nrfutil
+        run: last
+        groups:
+          - boards:
+              - custom_copy
