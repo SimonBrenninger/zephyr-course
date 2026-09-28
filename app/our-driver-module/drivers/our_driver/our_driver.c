@@ -16,6 +16,7 @@ struct our_driver_config {
 
 // mutable data (driver state)
 struct our_driver_data {
+	uint32_t calib;
 };
 
 
@@ -65,6 +66,14 @@ static int our_driver_channel_get(const struct device *dev, enum sensor_channel 
 }
 
 
+int our_driver_set_calibration(const struct device *dev, uint32_t calibration)
+{
+	struct our_driver_data *data = dev->data;
+	data->calib = calibration;
+	return 0;
+}
+
+
 static DEVICE_API(sensor, our_driver_api) = {
 	.sample_fetch = our_driver_sample_fetch,
 	.channel_get = our_driver_channel_get,
@@ -76,7 +85,9 @@ static DEVICE_API(sensor, our_driver_api) = {
 		.gpio = GPIO_DT_SPEC_GET(			\
 			DT_INST(inst, our_driver), gpios),	\
 	};							\
-	static struct our_driver_data data_##inst;		\
+	static struct our_driver_data data_##inst = {		\
+		.calib = 0,					\
+	};							\
 	DEVICE_DT_INST_DEFINE(inst,				\
 		our_driver_init,				\
 		NULL,						\

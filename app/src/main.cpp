@@ -4,6 +4,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/sensor.h>
 
+#include "our_driver/our_driver.h"
+
 #define SLEEP_TIME_MS		CONFIG_APP_HEARTBEAT_PERIOD_MS
 
 /* The devicetree node identifier for the "led0" alias. */
@@ -22,6 +24,10 @@ int main(void)
     if (!gpio_is_ready_dt(&led)) return 0;
 
     if (gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE) < 0) return 0;
+
+    // set calibration of our sensor
+    uint32_t calib = 0xdeadbeef;
+    if (our_driver_set_calibration(our_sensor, calib) != 0) return 0;
 
     while (1)
     {
