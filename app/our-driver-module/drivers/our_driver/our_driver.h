@@ -10,7 +10,6 @@ extern "C" {
 
 
 int our_driver_set_calibration(const struct device *dev, uint32_t calibration);
-int our_driver_sample_fetch(const struct device *dev, enum sensor_channel chan);
 
 #ifdef __cplusplus
 }
