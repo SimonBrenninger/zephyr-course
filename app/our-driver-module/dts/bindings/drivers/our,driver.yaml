@@ -1,0 +1,9 @@
+description: Our custom sensor driver binding.
+compatible: "our,driver"
+
+properties:
+  gpios:
+    type: phandle-array
+    required: true
+    description:
+      The GPIO pin connected to our custom sensor (LED).

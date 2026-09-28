@@ -1,5 +1,12 @@
 / {
+	sensor: our_sensor {
+		compatible = "our,driver";
+		gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;  // LED1
+		status = "okay";
+	};
+
 	aliases {
 		app-led = &led0;
+		our-sensor = &sensor;
 	};
 };
