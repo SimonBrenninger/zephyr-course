@@ -9,7 +9,7 @@ extern "C" {
 #include <zephyr/drivers/sensor.h>
 
 
-int our_driver_set_calibration(const struct device *dev, uint32_t calibration);
+int our_driver_set_calibration(const struct device *dev, uint8_t calibration);
 
 #ifdef __cplusplus
 }

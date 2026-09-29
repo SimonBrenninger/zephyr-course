@@ -25,10 +25,6 @@ int main(void)
 
     if (gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE) < 0) return 0;
 
-    // set calibration of our sensor
-    uint32_t calib = 0xdeadbeef;
-    if (our_driver_set_calibration(our_sensor, calib) != 0) return 0;
-
     while (1)
     {
         if (gpio_pin_toggle_dt(&led) < 0) return 0;

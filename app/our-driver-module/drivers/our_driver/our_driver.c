@@ -16,7 +16,7 @@ struct our_driver_config {
 
 // mutable data (driver state)
 struct our_driver_data {
-	uint32_t calib;
+	uint8_t calib;
 };
 
 
@@ -68,7 +68,7 @@ static int our_driver_channel_get(const struct device *dev, enum sensor_channel 
 }
 
 
-int our_driver_set_calibration(const struct device *dev, uint32_t calibration)
+int our_driver_set_calibration(const struct device *dev, uint8_t calibration)
 {
 	struct our_driver_data *data = dev->data;
 	data->calib = calibration;
