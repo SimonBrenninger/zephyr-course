@@ -32,17 +32,9 @@ int main(void)
     while (1)
     {
         if (gpio_pin_toggle_dt(&led) < 0) return 0;
-	if (led_state)
-	{
-		sensor_sample_fetch(our_sensor);
-	}
-	else
-	{
-		sensor_channel_get(our_sensor, SENSOR_CHAN_ALL, NULL);
-	}
 
         led_state = !led_state;
-        LOG_INF("LED state: %s", led_state ? "ON" : "OFF");
+        // LOG_INF("LED state: %s", led_state ? "ON" : "OFF");
         k_msleep(SLEEP_TIME_MS);
     }
     return 0;

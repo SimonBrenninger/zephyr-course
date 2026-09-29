@@ -60,6 +60,8 @@ static int our_driver_sample_fetch(const struct device *dev, enum sensor_channel
 
 static int our_driver_channel_get(const struct device *dev, enum sensor_channel chan, struct sensor_value *val)
 {
+	val->val1 = 1;
+	val->val2 = 50000;
 	const struct our_driver_config *cfg = dev->config;
 	const struct gpio_dt_spec gpio = cfg->gpio;
 	return our_driver_reset_led(&gpio);
