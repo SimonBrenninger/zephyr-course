@@ -76,6 +76,14 @@ int our_driver_set_calibration(const struct device *dev, uint8_t calibration)
 }
 
 
+int our_driver_get_calibration(const struct device *dev, uint8_t *calibration)
+{
+	struct our_driver_data *data = dev->data;
+	*calibration = data->calib;
+	return 0;
+}
+
+
 static DEVICE_API(sensor, our_driver_api) = {
 	.sample_fetch = our_driver_sample_fetch,
 	.channel_get = our_driver_channel_get,

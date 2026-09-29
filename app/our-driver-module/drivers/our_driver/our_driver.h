@@ -10,6 +10,7 @@ extern "C" {
 
 
 int our_driver_set_calibration(const struct device *dev, uint8_t calibration);
+int our_driver_get_calibration(const struct device *dev, uint8_t *calibration);
 
 #ifdef __cplusplus
 }

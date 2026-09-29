@@ -4,8 +4,6 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/sensor.h>
 
-#include "our_driver/our_driver.h"
-
 #define SLEEP_TIME_MS		CONFIG_APP_HEARTBEAT_PERIOD_MS
 
 /* The devicetree node identifier for the "led0" alias. */

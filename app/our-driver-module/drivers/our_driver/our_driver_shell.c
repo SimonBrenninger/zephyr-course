@@ -42,7 +42,12 @@ static int sensor_info_handler(const struct shell *sh, size_t argc, char **argv)
 	ARG_UNUSED(argv);
 
 	char* sensor_status = device_is_ready(our_sensor) ? "okay" : "disabled";
-	shell_info(sh, "Sensor Info: \n  Name: %s\n  Status: %s", sensor_name, sensor_status);
+	uint8_t sensor_calib;
+	our_driver_get_calibration(our_sensor, &sensor_calib);
+	shell_info(sh, "Sensor Info:");
+	shell_info(sh, "  Name: %s", sensor_name);
+	shell_info(sh, "  Status: %s", sensor_status);
+	shell_info(sh, "  Calibration: %" PRIu8, sensor_calib);
 	return 0;
 }
 
